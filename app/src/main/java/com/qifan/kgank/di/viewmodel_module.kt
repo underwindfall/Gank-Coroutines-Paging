@@ -1,7 +1,7 @@
 package com.qifan.kgank.di
 
-import com.qifan.kgank.repository.KGankRepository
-import com.qifan.kgank.viewmodel.KGankViewModel
+import com.qifan.kgank.data.source.remote.KGankRepository
+import com.qifan.kgank.ui.KGankViewModel
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 

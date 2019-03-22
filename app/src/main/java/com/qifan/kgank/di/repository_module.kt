@@ -1,6 +1,6 @@
 package com.qifan.kgank.di
 
-import com.qifan.kgank.repository.KGankRepository
+import com.qifan.kgank.data.source.remote.KGankRepository
 import org.koin.dsl.module.module
 
 /**

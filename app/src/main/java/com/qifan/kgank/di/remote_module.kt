@@ -1,7 +1,7 @@
 package com.qifan.kgank.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.qifan.kgank.network.KGankService
+import com.qifan.kgank.api.KGankService
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

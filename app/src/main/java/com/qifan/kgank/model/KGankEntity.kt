@@ -1,4 +1,4 @@
-package com.qifan.kgank.entity
+package com.qifan.kgank.model
 
 import com.squareup.moshi.Json
 

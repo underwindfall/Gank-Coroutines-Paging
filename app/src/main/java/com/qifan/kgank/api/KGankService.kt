@@ -1,6 +1,6 @@
-package com.qifan.kgank.network
+package com.qifan.kgank.api
 
-import com.qifan.kgank.entity.KGankEntity
+import com.qifan.kgank.model.KGankEntity
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET

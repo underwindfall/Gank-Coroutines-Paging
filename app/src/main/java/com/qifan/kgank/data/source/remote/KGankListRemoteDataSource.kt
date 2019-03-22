@@ -11,17 +11,18 @@ import kotlinx.coroutines.cancel
  */
 class KGankListRemoteDataSource(
     private val service: KGankService,
-    private val scope: CoroutineScope
+    private val scope: CoroutineScope,
+    private val type: String
 ) : BaseListRemoteDataSource<Int, KGankResultsItem>(scope) {
     val status = netWorkState
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, KGankResultsItem>) {
-        loadData(apiCall = { service.gankAsync("Android", 1, params.requestedLoadSize).await() }) { entity ->
+        loadData(apiCall = { service.gankAsync(type, 1, params.requestedLoadSize).await() }) { entity ->
             entity.results?.let { callback.onResult(it, 1, 2) }
         }
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, KGankResultsItem>) {
-        loadData(apiCall = { service.gankAsync("Android", params.key, params.requestedLoadSize).await() }) { entity ->
+        loadData(apiCall = { service.gankAsync(type, params.key, params.requestedLoadSize).await() }) { entity ->
             entity.results?.let {
                 callback.onResult(it, params.key + 1)
             }

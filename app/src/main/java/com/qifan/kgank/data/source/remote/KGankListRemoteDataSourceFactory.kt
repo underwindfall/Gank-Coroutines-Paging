@@ -14,16 +14,17 @@ import kotlinx.coroutines.CoroutineScope
  */
 class KGankListRemoteDataSourceFactory(
     private val service: KGankService,
-    private val scope: CoroutineScope
+    private val scope: CoroutineScope,
+    private val type: String
 ) : DataSource.Factory<Int, KGankResultsItem>() {
 
     private val postLiveData = MutableLiveData<KGankListRemoteDataSource>()
-    val netWorkState: LiveData<NetworkState> = postLiveData.value?.status ?: Transformations.switchMap(postLiveData){
+    val netWorkState: LiveData<NetworkState> = postLiveData.value?.status ?: Transformations.switchMap(postLiveData) {
         it.netWorkState
     }
 
     override fun create(): DataSource<Int, KGankResultsItem> {
-        val dataSource = KGankListRemoteDataSource(service, scope)
+        val dataSource = KGankListRemoteDataSource(service, scope, type)
         postLiveData.postValue(dataSource)
         return dataSource
     }

@@ -12,11 +12,14 @@ import kotlin.coroutines.CoroutineContext
  * Created by Qifan on 15/03/2019.
  */
 
-abstract class BaseViewModel(val repository: BaseRepository) : ViewModel(), CoroutineScope {
+abstract class BaseViewModel : ViewModel(), CoroutineScope {
     private val job = Job()
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
+    //data observable
+
+    //ui observable
     private val _snackBar = MutableLiveData<BaseEvent<String>>()
     private val _spinner = MutableLiveData<Boolean>()
 

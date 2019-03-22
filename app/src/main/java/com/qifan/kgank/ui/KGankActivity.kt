@@ -25,24 +25,25 @@ class KGankActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
         adapter = KGankAdapter()
         recyclerview.adapter = adapter
-
+        mViewModel.setCategory("Android")
         mViewModel.gankContentList.observe(this, Observer {
+            Logger.d("gank content list")
             adapter.submitList(it)
         })
 
         mViewModel.loadStatus.observe(this, Observer { state ->
-            Log.d("Qifan=======","WTF")
+            Log.d("Qifan=======", "WTF")
             when (state) {
-                NetworkState.SUCCESS ->{
-                    Log.d("Qifan=======","SUCCESS")
+                NetworkState.SUCCESS -> {
+                    Log.d("Qifan=======", "SUCCESS")
                     spinner.visibility = View.GONE
                 }
-                NetworkState.LOADING ->{
-                    Log.d("Qifan=======","LOADING")
+                NetworkState.LOADING -> {
+                    Log.d("Qifan=======", "LOADING")
                     spinner.visibility = View.VISIBLE
                 }
                 NetworkState.ERROR -> {
-                    Log.d("Qifan=======","ERROR")
+                    Log.d("Qifan=======", "ERROR")
                     spinner.visibility = View.GONE
                 }
             }
